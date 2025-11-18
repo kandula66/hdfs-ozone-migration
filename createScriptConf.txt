@@ -1,0 +1,13 @@
+fid_dir_prefix=/data/
+keytab_path=/tmp/hdfs.keytab
+principal=hdfs/vvs-baseiq-1.vpc.cloudera.com@VPC.CLOUDERA.COM
+volumeOwner=hdfs
+run_directory=.
+
+default_volume_quota=10GB
+buckets=raw|managed|work
+encrypted=N
+replication_type=RATIS
+layout=FILE_SYSTEM_OPTIMIZED
+
+

@@ -1,0 +1,162 @@
+---
+acceptance:
+  silentOverride: false
+  backedUpHDFS: false
+  backedUpMetastore: false
+  trashConfigured: false
+  potentialDataLoss: false
+beta: false
+clusters:
+  LEFT:
+    environment: "LEFT"
+    createIfNotExists: true
+    platformType: "CDP7_1_9_SP1"
+    hcfsNamespace: "hdfs://ns1"
+    hiveServer2:
+      uri: "jdbc:hive2://vvs-baseiq-1.vpc.cloudera.com:10000/default;principal=hive/_HOST@VPC.CLOUDERA.COM;ssl=true;sslTrustStore=/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks;trustStorePassword=pXmtL1MtFBlYxQGk3oA7iDM8daXzLxRS9jn27HpYAAd;trustStoreType=jks"
+      disconnected: false
+      connectionProperties:
+        maxTotal: ""
+        user: "hive"
+      driverClassName: "org.apache.hive.jdbc.HiveDriver"
+      jarFile: "/opt/cloudera/parcels/CDH/jars/hive-jdbc-3.1.3000.7.1.9.1032-3-standalone.jar:/opt/cloudera/parcels/CDH/jars/log4j-1.2-api-2.18.0.jar:/opt/cloudera/parcels/CDH/jars/log4j-api-2.18.0.jar:/opt/cloudera/parcels/CDH/jars/log4j-core-2.18.0.jar"
+      version: null
+    partitionDiscovery:
+      auto: true
+      initMSCK: true
+    enableAutoTableStats: false
+    enableAutoColumnStats: false
+    metastore_direct:
+      uri: "jdbc:mysql://vvs-baseiq-1.vpc.cloudera.com:3306/hive1"
+      type: "MYSQL"
+      initSql: ""
+      resource: null
+      version: null
+      connectionProperties:
+        password: "Test@123"
+        user: "hive13mhnezngm"
+      connectionPool:
+        min: 1
+        max: 3
+        timeout: 120
+  RIGHT:
+    environment: "RIGHT"
+    createIfNotExists: true
+    platformType: "CDP7_1_9_SP1"
+    hcfsNamespace: "ofs://ozone1756774157"
+    hiveServer2:
+      uri: "jdbc:hive2://vvs-baseiq-1.vpc.cloudera.com:10000/default;principal=hive/_HOST@VPC.CLOUDERA.COM;ssl=true;sslTrustStore=/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks;trustStorePassword=pXmtL1MtFBlYxQGk3oA7iDM8daXzLxRS9jn27HpYAAd;trustStoreType=jks"
+      disconnected: false
+      connectionProperties:
+        maxTotal: ""
+        user: "hive"
+      driverClassName: "org.apache.hive.jdbc.HiveDriver"
+      jarFile: "/opt/cloudera/parcels/CDH/jars/hive-jdbc-3.1.3000.7.1.9.1032-3-standalone.jar:/opt/cloudera/parcels/CDH/jars/log4j-1.2-api-2.18.0.jar:/opt/cloudera/parcels/CDH/jars/log4j-api-2.18.0.jar:/opt/cloudera/parcels/CDH/jars/log4j-core-2.18.0.jar"
+      version: null
+    partitionDiscovery:
+      auto: true
+      initMSCK: true
+    enableAutoTableStats: false
+    enableAutoColumnStats: false
+    metastore_direct: null
+commandLineOptions: null
+comment: ""
+copyAvroSchemaUrls: false
+connectionPoolLib: null
+dataStrategy: "SCHEMA_ONLY"
+databaseOnly: false
+dumpTestData: false
+loadTestDataFile: null
+filter:
+  dbRegEx: null
+  dbPropertySkipList: []
+  tblExcludeRegEx: ""
+  tblRegEx: ""
+  tblSizeLimit: -1
+  tblPartitionLimit: -1
+skipLinkCheck: false
+databases:
+- "hdfs_db1"
+legacyTranslations:
+  rowSerde:
+    '''org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe''': "'org.apache.hadoop.hive.serde2.MultiDelimitSerDe'"
+    '''org.apache.hadoop.hive.contrib.serde2.RegexSerDe''': "'org.apache.hadoop.hive.serde2.RegexSerDe'"
+    '''org.apache.hadoop.hive.contrib.serde2.TypedBytesSerDe''': "'org.apache.hadoop.hive.serde2.TypedBytesSerDe'"
+dbPrefix: "oz_"
+dbRename: ""
+dumpSource: "LEFT"
+execute: false
+hybrid:
+  exportImportPartitionLimit: 100
+  sqlPartitionLimit: 500
+  sqlSizeLimit: 1073741824
+icebergConversion:
+  enable: false
+  fileTypeTranslation: "STANDARD"
+  version: 2
+  tableProperties: {}
+  inplace: false
+migrateACID:
+  "on": false
+  only: false
+  artificialBucketThreshold: 2
+  partitionLimit: 500
+  downgrade: false
+  inplace: false
+migrateVIEW:
+  "on": false
+migrateNonNative: false
+optimization:
+  sortDynamicPartitionInserts: false
+  skip: false
+  autoTune: false
+  compressTextOutput: false
+  skipStatsCollection: false
+  overrides:
+    properties: {}
+  buildShadowStatistics: false
+encryptedPasswords: false
+quiet: false
+readOnly: false
+noPurge: false
+replace: false
+resetRight: false
+saveWorkingTables: false
+skipFeatures: false
+skipLegacyTranslation: false
+sqlOutput: true
+suppressCliWarnings: false
+sync: false
+transfer:
+  transferPrefix: "hms_mirror_transfer_"
+  shadowPrefix: "hms_mirror_shadow_"
+  storageMigrationPostfix: "_storage_migration"
+  exportBaseDirPrefix: "/apps/hive/warehouse/export_"
+  remoteWorkingDirectory: "hms_mirror_working"
+  intermediateStorage: ""
+  targetNamespace: null
+  storageMigration:
+    translationType: "RELATIVE"
+    dataMovementStrategy: "MANUAL"
+    dataFlow: "PULL"
+    skipDatabaseLocationAdjustments: false
+    createArchive: false
+    consolidateTablesForDistcp: false
+    strict: false
+  warehouse:
+    source: "GLOBAL"
+    externalDirectory: null
+    managedDirectory: null
+ownershipTransfer:
+  database: false
+  table: false
+translator:
+  forceExternalLocation: false
+  autoGlobalLocationMap: null
+  userGlobalLocationMap:
+    /data/fid1/raw:
+      EXTERNAL_TABLE: "/fid1/raw"
+  warehouseMapBuilder:
+    sources: {}
+    inSync: false
+    warehousePlans: {}
